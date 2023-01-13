@@ -26,7 +26,7 @@ class openFolderMPV(GObject.GObject, Nautilus.MenuProvider):
         self,
         files: List[Nautilus.FileInfo],
         ) -> List[Nautilus.MenuItem]:
-        if len(files) != 1 and not shutil.which("mpv"):
+        if len(files) != 1 or shutil.which("mpv") is None:
             return []
 
         file = files[0]
